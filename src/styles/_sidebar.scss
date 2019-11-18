@@ -1,2 +1,31 @@
-aside {
+.sidebar {
+  padding: 5px;
+  float: left;
+  width: 30%;
+  border-right: 1px solid #000;
+  &-link {
+    border: 1px solid #000;
+    margin-bottom: -1px;
+    a {
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      color: #000;
+      &:hover {
+        background-color: #87ceeb;
+      }
+    }
+  }
+  button {
+    border: 1px solid #000;
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    margin: 10px auto;
+    width: 98%;
+    font-family: inherit;
+    &:hover {
+      background-color: #87ceeb;
+    }
+  }
 }
