@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
-import STORE from "./components/store";
+import Note from "./Note";
+import STORE from "./store";
 
 export default class App extends Component {
   state = {
@@ -20,8 +21,8 @@ export default class App extends Component {
           exact={true}
           render={props => (
             <>
-              <Sidebar {...props} />
-              <Main {...props} />
+              <Sidebar {...props} folders={this.state.folders} Mode="Normal" />
+              <Main {...props} notes={this.state.notes} />
             </>
           )}
         />
@@ -29,8 +30,13 @@ export default class App extends Component {
           path="/folder/:folderId"
           render={props => (
             <>
-              <Sidebar {...props} />
-              <Main {...props} />
+              <Sidebar
+                {...props}
+                folders={this.state.folders}
+                Mode="ActiveFolder"
+              />
+
+              <Main {...props} notes={this.state.notes} />
             </>
           )}
         />
@@ -38,8 +44,13 @@ export default class App extends Component {
           path="/note/:noteId"
           render={props => (
             <>
-              <Sidebar {...props} />
-              <Main {...props} />
+              <Sidebar
+                {...props}
+                folders={this.state.folders}
+                FolderID={props.match.params.folderId}
+                Mode="Notes"
+              />
+              <Note {...props} notes={this.state.notes} />
             </>
           )}
         />
