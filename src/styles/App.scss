@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+  @import "header";
+  @import "sidebar";
+  @import "main";
+  @import "note";
+}
