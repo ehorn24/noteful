@@ -4,20 +4,30 @@ import { Link } from "react-router-dom";
 const Main = ({ match, notes }) => {
   return (
     <main>
-      <h3>Notes</h3>
-      {!!match.params.folderId
-        ? notes
-            .filter(note => note.folderId === match.params.folderId)
-            .map(note => (
-              <div key={note.id}>
-                <Link to={"/note/" + note.id}>{note.name}</Link>
-              </div>
-            ))
-        : notes.map(note => (
-            <div key={note.id}>
-              <Link to={"/note/" + note.id}>{note.name}</Link>
-            </div>
-          ))}
+      {notes
+        .filter(note =>
+          !!match.params.folderId
+            ? note.folderId === match.params.folderId
+            : true
+        )
+        .map(note => (
+          <div key={note.id} className="card">
+            <Link to={"/note/" + note.id}>
+              <span>{note.name}</span>
+              <time>
+                {new Date(note.modified).toLocaleDateString("en-US", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true
+                })}
+              </time>
+            </Link>
+          </div>
+        ))}
     </main>
   );
 };

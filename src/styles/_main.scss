@@ -1,0 +1,32 @@
+main {
+  float: left;
+  width: 68%;
+  padding: 5px;
+  border-left: 1px solid #000;
+  margin-left: -1px;
+  min-height: 85vh;
+  .card {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      font-size: 1.5em;
+      padding: 10px;
+      &:hover {
+        background-color: #eef3fb;
+      }
+      span {
+        display: block;
+        margin-bottom: 5px;
+      }
+      time {
+        font-size: 0.5em;
+        text-align: right;
+        display: block;
+        color: #999;
+      }
+    }
+  }
+}
