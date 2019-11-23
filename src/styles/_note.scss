@@ -1,0 +1,16 @@
+main {
+  .note-header {
+    border: 1px solid black;
+    padding: 5px;
+    min-height: 15vh;
+    button {
+      display: block;
+      float: right;
+      padding: 5px;
+      margin-right: 5px;
+      &:hover {
+        background-color: lightskyblue;
+      }
+    }
+  }
+}
