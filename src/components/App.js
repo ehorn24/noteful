@@ -9,7 +9,8 @@ import STORE from "./store";
 export default class App extends Component {
   state = {
     folders: [...STORE.folders],
-    notes: [...STORE.notes]
+    notes: [...STORE.notes],
+    test: "context"
   };
 
   render() {
