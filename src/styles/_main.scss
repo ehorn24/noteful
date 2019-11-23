@@ -8,15 +8,17 @@ main {
   .card {
     border: 1px solid #000;
     margin-bottom: 10px;
+    min-height: 14vh;
+    &:hover {
+      background-color: #eef3fb;
+    }
     a {
       display: block;
       text-decoration: none;
       color: #000;
       font-size: 1.5em;
       padding: 10px;
-      &:hover {
-        background-color: #eef3fb;
-      }
+
       span {
         display: block;
         margin-bottom: 5px;
@@ -26,6 +28,14 @@ main {
         text-align: right;
         display: block;
         color: #999;
+        float: left;
+      }
+      button {
+        padding: 5px;
+        float: right;
+        &:hover {
+          background-color: lightskyblue;
+        }
       }
     }
   }
