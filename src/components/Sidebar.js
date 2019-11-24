@@ -7,8 +7,8 @@ const Sidebar = ({ Mode, match, folders, history }) => {
   switch (Mode) {
     case "Normal":
       return [
-        ...folders.map(folder => (
-          <div key={folder.id} className="sidebar-link">
+        ...folders.map((folder, key) => (
+          <div key={key} className="sidebar-link">
             <Link to={"/folder/" + folder.id}>{folder.name}</Link>
           </div>
         )),
@@ -16,8 +16,8 @@ const Sidebar = ({ Mode, match, folders, history }) => {
       ];
     case "ActiveFolder":
       return [
-        ...folders.map(folder => (
-          <div key={folder.id} className="sidebar-link">
+        ...folders.map((folder, key) => (
+          <div key={key} className="sidebar-link">
             <Link
               to={"/folder/" + folder.id}
               className={match.params.folderId === folder.id ? "active" : null}
