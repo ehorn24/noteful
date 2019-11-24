@@ -8,7 +8,7 @@ main {
   .card {
     border: 1px solid #000;
     margin-bottom: 10px;
-    min-height: 14vh;
+    position: relative;
     &:hover {
       background-color: #eef3fb;
     }
@@ -18,24 +18,27 @@ main {
       color: #000;
       font-size: 1.5em;
       padding: 10px;
-
       span {
         display: block;
         margin-bottom: 5px;
       }
       time {
         font-size: 0.5em;
-        text-align: right;
         display: block;
         color: #999;
-        float: left;
       }
-      button {
-        padding: 5px;
-        float: right;
-        &:hover {
-          background-color: lightskyblue;
-        }
+    }
+    button {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      line-height: 1.5;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      &:hover {
+        background-color: lightskyblue;
       }
     }
   }
