@@ -25,8 +25,8 @@ const Main = ({ match, notes }) => {
                   hour12: true
                 })}
               </time>
-              <button>Delete</button>
             </Link>
+            <button>Delete</button>
           </div>
         ))}
     </main>
