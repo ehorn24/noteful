@@ -4,14 +4,21 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
 import Note from "./Note";
-import STORE from "./store";
 
 export default class App extends Component {
   state = {
-    folders: [...STORE.folders],
-    notes: [...STORE.notes],
-    test: "context"
+    folders: [],
+    notes: []
   };
+
+  componentDidMount() {
+    Promise.all([
+      fetch("http://localhost:9090/notes").then(res => res.json()),
+      fetch("http://localhost:9090/folders").then(res => res.json())
+    ]).then(([notes, folders]) => {
+      this.setState({ notes, folders });
+    });
+  }
 
   render() {
     return (
