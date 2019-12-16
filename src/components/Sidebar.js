@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const addFolderButton = <button>Add Folder</button>;
+const addButtons = (
+  <>
+    <Link to="/addfolder">
+      <button>Add Folder</button>
+    </Link>
+    <Link to="/addnote">
+      <button>Add Note</button>
+    </Link>
+  </>
+);
 
 const Sidebar = ({ Mode, match, folders, history }) => {
   switch (Mode) {
@@ -12,7 +21,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
             <Link to={"/folder/" + folder.id}>{folder.name}</Link>
           </div>
         )),
-        addFolderButton
+        addButtons
       ];
     case "ActiveFolder":
       return [
@@ -26,7 +35,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
             </Link>
           </div>
         )),
-        addFolderButton
+        addButtons
       ];
     case "Notes":
       return <button onClick={() => history.goBack()}>Back to Folder</button>;

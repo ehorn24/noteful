@@ -1,6 +1,6 @@
 import React from "react";
 
-const Note = ({ match, notes }) => {
+const Note = ({ match, notes, deleteNote }) => {
   let currentNote = notes.filter(note => note.id === match.params.noteId);
   return (
     <main>
@@ -17,7 +17,13 @@ const Note = ({ match, notes }) => {
             hour12: true
           })}
         </time>
-        <button>Delete</button>
+        <button
+          onClick={e => {
+            deleteNote(currentNote[0].id);
+          }}
+        >
+          Delete
+        </button>
       </div>
       <p>{currentNote[0].content}</p>
     </main>

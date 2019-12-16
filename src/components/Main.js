@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Main = ({ match, notes }) => {
+const Main = ({ match, notes, deleteNote }) => {
   return (
     <main>
       {notes
@@ -26,7 +26,7 @@ const Main = ({ match, notes }) => {
                 })}
               </time>
             </Link>
-            <button>Delete</button>
+            <button onClick={e => deleteNote(note.id)}>Delete</button>
           </div>
         ))}
     </main>
