@@ -27,17 +27,13 @@ export default class App extends Component {
     this.getStuff();
   }
 
-  componentDidUpdate() {
-    this.getStuff();
-  }
-
   deleteNote = noteId => {
     fetch(`http://localhost:9090/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
       }
-    });
+    }).then(() => this.getStuff());
     let notes = [...this.state.notes].filter(note => note.id !== noteId);
     this.setState({ notes });
   };
@@ -56,7 +52,9 @@ export default class App extends Component {
         "content-type": "application/json"
       },
       body: JSON.stringify({ id, name })
-    });
+    }).then(() =>
+      this.setState({ folders: [...this.state.folders, { id, name }] })
+    );
   };
 
   addNote = (name, folderId, content) => {
@@ -67,7 +65,6 @@ export default class App extends Component {
       Math.random()
         .toString(36)
         .substring(2, 4);
-    console.log(folderId);
     const modified = new Date();
     fetch("http://localhost:9090/notes", {
       method: "POST",
@@ -81,7 +78,11 @@ export default class App extends Component {
         folderId,
         content
       })
-    });
+    }).then(() =>
+      this.setState({
+        notes: [...this.state.notes, { id, name, modified, folderId, content }]
+      })
+    );
   };
 
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Note = ({ match, notes, deleteNote }) => {
+const Note = ({ match, history, notes, deleteNote }) => {
   let currentNote = notes.filter(note => note.id === match.params.noteId);
   return (
     <main>
@@ -19,7 +19,9 @@ const Note = ({ match, notes, deleteNote }) => {
         </time>
         <button
           onClick={e => {
+            e.preventDefault();
             deleteNote(currentNote[0].id);
+            history.push("/");
           }}
         >
           Delete
