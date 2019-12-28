@@ -38,7 +38,7 @@ export default Main;
 
 Main.propTypes = {
   notes: PropTypes.arrayOf(
-    PropTypes.object.shape({
+    PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       modified: PropTypes.string.isRequired,

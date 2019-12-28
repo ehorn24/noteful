@@ -54,7 +54,7 @@ export default props => (
 Sidebar.propTypes = {
   Mode: PropTypes.string.isRequired,
   folders: PropTypes.arrayOf(
-    PropTypes.object.shape({
+    PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
