@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const addButtons = (
+const AddButtons = () => (
   <>
     <Link to="/addfolder">
       <button>Add Folder</button>
@@ -21,7 +22,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
             <Link to={"/folder/" + folder.id}>{folder.name}</Link>
           </div>
         )),
-        addButtons
+        <AddButtons key={50} />
       ];
     case "ActiveFolder":
       return [
@@ -35,7 +36,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
             </Link>
           </div>
         )),
-        addButtons
+        <AddButtons key={51} />
       ];
     case "Notes":
       return <button onClick={() => history.goBack()}>Back to Folder</button>;
@@ -49,3 +50,13 @@ export default props => (
     <Sidebar {...props} />
   </div>
 );
+
+Sidebar.propTypes = {
+  Mode: PropTypes.string.isRequired,
+  folders: PropTypes.arrayOf(
+    PropTypes.object.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  )
+};
