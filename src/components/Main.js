@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Main = ({ match, notes, deleteNote }) => {
   return (
@@ -34,3 +35,15 @@ const Main = ({ match, notes, deleteNote }) => {
 };
 
 export default Main;
+
+Main.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.object.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      modified: PropTypes.string.isRequired,
+      folderId: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired
+    })
+  )
+};
