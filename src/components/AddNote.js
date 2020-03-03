@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class AddNote extends Component {
   state = {
     name: "",
-    folderId: -1,
+    folderId: "",
     content: ""
   };
 
