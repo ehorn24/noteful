@@ -8,13 +8,13 @@ const Main = ({ match, notes, deleteNote }) => {
       {notes
         .filter(note =>
           !!match.params.folderId
-            ? note.folderId === match.params.folderId
+            ? note.folderid === +match.params.folderId
             : true
         )
         .map(note => (
           <div key={note.id} className="card">
             <Link to={"/note/" + note.id}>
-              <span>{note.name}</span>
+              <span>{note.notename}</span>
               <time>
                 {new Date(note.modified).toLocaleDateString("en-US", {
                   weekday: "long",
@@ -39,10 +39,10 @@ export default Main;
 Main.propTypes = {
   notes: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      notename: PropTypes.string.isRequired,
       modified: PropTypes.string.isRequired,
-      folderId: PropTypes.string.isRequired,
+      folderid: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired
     })
   )

@@ -19,7 +19,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
       return [
         ...folders.map((folder, key) => (
           <div key={key} className="sidebar-link">
-            <Link to={"/folder/" + folder.id}>{folder.name}</Link>
+            <Link to={"/folder/" + folder.id}>{folder.foldername}</Link>
           </div>
         )),
         <AddButtons key={50} />
@@ -32,7 +32,7 @@ const Sidebar = ({ Mode, match, folders, history }) => {
               to={"/folder/" + folder.id}
               className={match.params.folderId === folder.id ? "active" : null}
             >
-              {folder.name}
+              {folder.foldername}
             </Link>
           </div>
         )),
@@ -55,8 +55,8 @@ Sidebar.propTypes = {
   Mode: PropTypes.string.isRequired,
   folders: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      id: PropTypes.number.isRequired,
+      foldername: PropTypes.string.isRequired
     })
   )
 };

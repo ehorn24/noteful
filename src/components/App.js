@@ -16,8 +16,8 @@ export default class App extends Component {
 
   getStuff = () => {
     Promise.all([
-      fetch("http://localhost:9090/notes").then(res => res.json()),
-      fetch("http://localhost:9090/folders").then(res => res.json())
+      fetch("/notes/").then(res => res.json()),
+      fetch("/folders/").then(res => res.json())
     ]).then(([notes, folders]) => {
       this.setState({ notes, folders });
     });
@@ -28,7 +28,7 @@ export default class App extends Component {
   }
 
   deleteNote = noteId => {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -46,14 +46,16 @@ export default class App extends Component {
       Math.random()
         .toString(36)
         .substring(2, 4);
-    fetch("http://localhost:9090/folders", {
+    fetch("/folders", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify({ id, name })
     }).then(() =>
-      this.setState({ folders: [...this.state.folders, { id, name }] })
+      this.setState({
+        folders: [...this.state.folders, { id, foldername: name }]
+      })
     );
   };
 
@@ -66,7 +68,7 @@ export default class App extends Component {
         .toString(36)
         .substring(2, 4);
     const modified = new Date();
-    fetch("http://localhost:9090/notes", {
+    fetch("/notes", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -80,7 +82,10 @@ export default class App extends Component {
       })
     }).then(() =>
       this.setState({
-        notes: [...this.state.notes, { id, name, modified, folderId, content }]
+        notes: [
+          ...this.state.notes,
+          { id, notename: name, modified, folderId, content }
+        ]
       })
     );
   };
@@ -101,6 +106,7 @@ export default class App extends Component {
                   Mode="Normal"
                   key={1}
                 />
+
                 <Main
                   {...props}
                   notes={this.state.notes}

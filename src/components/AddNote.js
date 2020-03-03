@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class AddNote extends Component {
   state = {
     name: "",
-    folderId: "",
+    folderId: -1,
     content: ""
   };
 
@@ -44,7 +44,7 @@ export default class AddNote extends Component {
             onChange={e => this.setState({ folderId: e.target.value })}
           >
             {this.props.folders.map(folder => (
-              <option value={folder.id}>{folder.name}</option>
+              <option value={folder.id}>{folder.foldername}</option>
             ))}
           </select>
         </div>
