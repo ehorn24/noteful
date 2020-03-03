@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class AddNote extends Component {
   state = {
     name: "",
-    folderId: "",
+    folderid: "",
     content: ""
   };
 
@@ -16,7 +16,7 @@ export default class AddNote extends Component {
           e.preventDefault();
           this.props.addNote(
             this.state.name,
-            this.state.folderId,
+            this.state.folderid,
             this.state.content
           );
           this.props.history.goBack();
@@ -40,8 +40,8 @@ export default class AddNote extends Component {
             name="folder"
             id="folder"
             required
-            value={this.state.folderId}
-            onChange={e => this.setState({ folderId: e.target.value })}
+            value={this.state.folderid}
+            onChange={e => this.setState({ folderid: e.target.value })}
           >
             {this.props.folders.map(folder => (
               <option value={folder.id}>{folder.foldername}</option>
