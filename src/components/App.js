@@ -64,14 +64,6 @@ export default class App extends Component {
   };
 
   addNote = (name, folderid, content) => {
-    console.log(folderid);
-    const id =
-      Math.random()
-        .toString(36)
-        .substring(2, 4) +
-      Math.random()
-        .toString(36)
-        .substring(2, 4);
     const modified = new Date();
     fetch("https://stormy-temple-39077.herokuapp.com/notes", {
       method: "POST",
@@ -79,17 +71,18 @@ export default class App extends Component {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        id,
         name,
         modified,
         folderid,
         content
-      }).then(res => res.json())
-    }).then(newNote =>
-      this.setState({
-        notes: [...this.state.notes, newNote]
       })
-    );
+    })
+      .then(res => res.json())
+      .then(newNote =>
+        this.setState({
+          notes: [...this.state.notes, newNote]
+        })
+      );
   };
 
   render() {
