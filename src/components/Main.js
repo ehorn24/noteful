@@ -35,15 +35,3 @@ const Main = ({ match, notes, deleteNote }) => {
 };
 
 export default Main;
-
-Main.propTypes = {
-  notes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      notename: PropTypes.string.isRequired,
-      modified: PropTypes.string.isRequired,
-      folderid: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired
-    })
-  )
-};

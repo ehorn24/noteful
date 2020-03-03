@@ -43,8 +43,10 @@ export default class AddNote extends Component {
             value={this.state.folderid}
             onChange={e => this.setState({ folderid: e.target.value })}
           >
-            {this.props.folders.map(folder => (
-              <option value={folder.id}>{folder.foldername}</option>
+            {this.props.folders.map((folder, i) => (
+              <option value={folder.id} key={i}>
+                {folder.foldername}
+              </option>
             ))}
           </select>
         </div>

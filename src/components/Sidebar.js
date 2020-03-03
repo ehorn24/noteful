@@ -50,13 +50,3 @@ export default props => (
     <Sidebar {...props} />
   </div>
 );
-
-Sidebar.propTypes = {
-  Mode: PropTypes.string.isRequired,
-  folders: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      foldername: PropTypes.string.isRequired
-    })
-  )
-};
