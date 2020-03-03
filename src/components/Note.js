@@ -1,7 +1,7 @@
 import React from "react";
 
 const Note = ({ match, history, notes, deleteNote }) => {
-  let currentNote = notes.filter(note => note.id === +match.params.noteId);
+  let currentNote = notes.find(note => note.id === +match.params.noteId);
   return (
     <main>
       <div className="note-header">
