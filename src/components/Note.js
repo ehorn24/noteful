@@ -5,7 +5,7 @@ const Note = ({ match, history, notes, deleteNote }) => {
   return (
     <main>
       <div className="note-header">
-        <h3>{currentNote[0].name}</h3>
+        <h3>{currentNote[0].notename}</h3>
         <time>
           {new Date(currentNote[0].modified).toLocaleDateString("en-US", {
             weekday: "long",
