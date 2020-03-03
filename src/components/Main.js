@@ -8,7 +8,7 @@ const Main = ({ match, notes, deleteNote }) => {
       {notes
         .filter(note =>
           !!match.params.folderId
-            ? note.folderid === +match.params.folderId
+            ? note.folderid === match.params.folderId
             : true
         )
         .map(note => (
@@ -39,10 +39,10 @@ export default Main;
 Main.propTypes = {
   notes: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       notename: PropTypes.string.isRequired,
       modified: PropTypes.string.isRequired,
-      folderid: PropTypes.number.isRequired,
+      folderid: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired
     })
   )

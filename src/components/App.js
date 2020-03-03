@@ -64,6 +64,7 @@ export default class App extends Component {
   };
 
   addNote = (name, folderid, content) => {
+    console.log(folderid);
     const id =
       Math.random()
         .toString(36)
@@ -83,13 +84,10 @@ export default class App extends Component {
         modified,
         folderid,
         content
-      })
-    }).then(() =>
+      }).then(res => res.json())
+    }).then(newNote =>
       this.setState({
-        notes: [
-          ...this.state.notes,
-          { id, notename: name, modified, folderid, content }
-        ]
+        notes: [...this.state.notes, newNote]
       })
     );
   };
