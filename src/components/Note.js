@@ -5,9 +5,9 @@ const Note = ({ match, history, notes, deleteNote }) => {
   return (
     <main>
       <div className="note-header">
-        <h3>{currentNote[0].notename}</h3>
+        <h3>{currentNote.notename}</h3>
         <time>
-          {new Date(currentNote[0].modified).toLocaleDateString("en-US", {
+          {new Date(currentNote.modified).toLocaleDateString("en-US", {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -20,14 +20,14 @@ const Note = ({ match, history, notes, deleteNote }) => {
         <button
           onClick={e => {
             e.preventDefault();
-            deleteNote(currentNote[0].id);
+            deleteNote(currentNote.id);
             history.push("/");
           }}
         >
           Delete
         </button>
       </div>
-      <p>{currentNote[0].content}</p>
+      <p>{currentNote.content}</p>
     </main>
   );
 };
