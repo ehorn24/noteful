@@ -16,8 +16,12 @@ export default class App extends Component {
 
   getStuff = () => {
     Promise.all([
-      fetch("/notes/").then(res => res.json()),
-      fetch("/folders/").then(res => res.json())
+      fetch("https://stormy-temple-39077.herokuapp.com/notes/").then(res =>
+        res.json()
+      ),
+      fetch("https://stormy-temple-39077.herokuapp.com/folders/").then(res =>
+        res.json()
+      )
     ]).then(([notes, folders]) => {
       this.setState({ notes, folders });
     });
@@ -28,7 +32,7 @@ export default class App extends Component {
   }
 
   deleteNote = noteId => {
-    fetch(`/notes/${noteId}`, {
+    fetch(`https://stormy-temple-39077.herokuapp.com/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -46,7 +50,7 @@ export default class App extends Component {
       Math.random()
         .toString(36)
         .substring(2, 4);
-    fetch("/folders", {
+    fetch("https://stormy-temple-39077.herokuapp.com/folders", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -68,7 +72,7 @@ export default class App extends Component {
         .toString(36)
         .substring(2, 4);
     const modified = new Date();
-    fetch("/notes", {
+    fetch("https://stormy-temple-39077.herokuapp.com/notes", {
       method: "POST",
       headers: {
         "content-type": "application/json"
