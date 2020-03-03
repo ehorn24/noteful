@@ -42,16 +42,16 @@ export default class App extends Component {
     this.setState({ notes });
   };
 
-  addFolder = name => {
+  addFolder = foldername => {
     fetch("https://stormy-temple-39077.herokuapp.com/folders", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({ name })
+      body: JSON.stringify({ foldername })
     }).then(() =>
       this.setState({
-        folders: [...this.state.folders, { foldername: name }]
+        folders: [...this.state.folders, { foldername }]
       })
     );
   };

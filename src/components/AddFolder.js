@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class AddFolder extends Component {
   state = {
-    name: "",
+    foldername: "",
     content: ""
   };
 
@@ -13,7 +13,7 @@ export default class AddFolder extends Component {
         className="add-folder"
         onSubmit={e => {
           e.preventDefault();
-          this.props.addFolder(this.state.name);
+          this.props.addFolder(this.state.foldername);
           this.props.history.goBack();
         }}
       >
@@ -25,8 +25,8 @@ export default class AddFolder extends Component {
             name="name"
             id="name"
             required
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.foldername}
+            onChange={e => this.setState({ foldername: e.target.value })}
           />
         </div>
         <button type="submit">Submit</button>
