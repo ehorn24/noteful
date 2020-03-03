@@ -2,6 +2,9 @@ import React from "react";
 
 const Note = ({ match, history, notes, deleteNote }) => {
   let currentNote = notes.find(note => note.id === +match.params.noteId);
+  if (!currentNote) {
+    return null;
+  }
   return (
     <main>
       <div className="note-header">
