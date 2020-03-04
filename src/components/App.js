@@ -43,22 +43,22 @@ export default class App extends Component {
   };
 
   addFolder = foldername => {
-    fetch("https://stormy-temple-39077.herokuapp.com/folders", {
+    fetch("https://stormy-temple-39077.herokuapp.com/folders/", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify({ foldername })
-    }).then(() =>
+    }).then(folder =>
       this.setState({
-        folders: [...this.state.folders, { foldername }]
+        folders: [...this.state.folders, folder]
       })
     );
   };
 
   addNote = (name, folderid, content) => {
     const modified = new Date();
-    fetch("https://stormy-temple-39077.herokuapp.com/notes", {
+    fetch("https://stormy-temple-39077.herokuapp.com/notes/", {
       method: "POST",
       headers: {
         "content-type": "application/json"
