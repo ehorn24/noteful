@@ -42,7 +42,11 @@ export default class AddNote extends Component {
             required
             value={this.state.folderid}
             onChange={e => this.setState({ folderid: e.target.value })}
+            defaultValue=""
           >
+            <option value="" disabled>
+              Select a folder
+            </option>
             {this.props.folders.map((folder, i) => (
               <option value={folder.id} key={i}>
                 {folder.foldername}
