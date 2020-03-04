@@ -56,7 +56,7 @@ export default class App extends Component {
     );
   };
 
-  addNote = (name, folderid, content) => {
+  addNote = (notename, folderid, content) => {
     const modified = new Date();
     fetch("https://stormy-temple-39077.herokuapp.com/notes/", {
       method: "POST",
@@ -64,7 +64,7 @@ export default class App extends Component {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        name,
+        notename,
         modified,
         folderid: parseInt(folderid),
         content
