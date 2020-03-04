@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 export default class AddFolder extends Component {
   state = {
-    foldername: "",
-    content: ""
+    foldername: ""
   };
 
   render() {

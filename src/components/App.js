@@ -49,11 +49,13 @@ export default class App extends Component {
         "content-type": "application/json"
       },
       body: JSON.stringify({ foldername })
-    }).then(folder =>
-      this.setState({
-        folders: [...this.state.folders, folder]
-      })
-    );
+    })
+      .then(res => res.json())
+      .then(newFolder =>
+        this.setState({
+          folders: [...this.state.folders, newFolder]
+        })
+      );
   };
 
   addNote = (notename, folderid, content) => {
