@@ -67,7 +67,7 @@ export default class AddNote extends Component {
           type="button"
           onClick={e => {
             e.preventDefault();
-            this.props.history.goBack();
+            this.props.history.goBack("/");
           }}
         >
           Cancel
