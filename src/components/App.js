@@ -66,7 +66,7 @@ export default class App extends Component {
       body: JSON.stringify({
         name,
         modified,
-        folderid,
+        folderid: parseInt(folderid),
         content
       })
     })
