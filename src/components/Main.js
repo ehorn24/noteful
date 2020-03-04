@@ -7,7 +7,7 @@ const Main = ({ match, notes, deleteNote }) => {
       {notes
         .filter(note =>
           !!match.params.folderId
-            ? note.folderid === match.params.folderId
+            ? note.folderid === +match.params.folderId
             : true
         )
         .map(note => (
